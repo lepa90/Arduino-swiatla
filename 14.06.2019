@@ -1,0 +1,49 @@
+
+
+int czujnik =11;
+int val = 0;
+int green = 10;
+int yellow = 9;
+int red = 8;
+
+void setup() {
+pinMode(green, OUTPUT); 
+pinMode(yellow, OUTPUT);
+pinMode(red, OUTPUT);
+
+pinMode(11, INPUT);
+Serial.begin(9600);
+}
+void loop() {
+ 
+digitalRead(czujnik);
+val=digitalRead(czujnik);
+
+Serial.println(val);
+ 
+if (digitalRead(czujnik)==1){
+
+  digitalWrite(red, HIGH);       //włączenie diody czerwonej
+  delay(3000);                   //zatrzymanie stanu na 3 sekundy
+  digitalWrite(yellow, HIGH);    //włączenie diody żółtej
+  delay(1000);                   //zatrzymanie stanu na 1 sekundę 
+  digitalWrite(red, LOW);        //wyłączenie diody czerwonej
+  digitalWrite(yellow, LOW);     //wyłączenie diody żółtej
+  digitalWrite(green, HIGH);     //włączenie diody zielonej
+  delay(2000);                   //zatrzymanie stanu na 2 sekundy
+  digitalWrite(green, LOW);      //wyłączenie diody zielonej
+  digitalWrite(yellow,HIGH);     //włączenie diody żółtej
+  delay(1000);                   //zatrzymanie stanu na 1 sekundę
+  digitalWrite(yellow,LOW);
+}
+ 
+else {
+      
+  digitalWrite(yellow, LOW);  
+  delay(500);//wyłączenie diody żółtej
+  digitalWrite(yellow, HIGH);
+  delay(500);
+}
+ 
+delay(300);
+}
